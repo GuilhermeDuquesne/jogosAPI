@@ -1,0 +1,506 @@
+{
+  "info": {
+    "name": "JogosAPI",
+    "description": "Testes da API de jogos (Spring Boot). Rode primeiro a pasta 1 para cadastrar os jogos de exemplo.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "1 - Cadastrar (POST)",
+      "item": [
+        {
+          "name": "Cadastrar Zelda",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/jogo",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"The Legend of Zelda: Tears of the Kingdom\",\n  \"genero\": \"Aventura\",\n  \"plataforma\": \"Switch\",\n  \"anoLancamento\": 2023,\n  \"preco\": 349.9\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Cadastrar Hollow Knight",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/jogo",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Hollow Knight\",\n  \"genero\": \"Metroidvania\",\n  \"plataforma\": \"PC\",\n  \"anoLancamento\": 2017,\n  \"preco\": 46.99\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Cadastrar Elden Ring",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/jogo",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Elden Ring\",\n  \"genero\": \"RPG\",\n  \"plataforma\": \"PC\",\n  \"anoLancamento\": 2022,\n  \"preco\": 229.9\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Cadastrar Hades",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/jogo",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Hades\",\n  \"genero\": \"Roguelike\",\n  \"plataforma\": \"PC\",\n  \"anoLancamento\": 2020,\n  \"preco\": 73.99\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Cadastrar sem nome (espera 400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/jogo",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"genero\": \"RPG\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2 - Consultar (GET)",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jogo",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar por ID (1)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jogo/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar por ID inexistente (espera 404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jogo/999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo",
+                "999"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3 - Filtros (@RequestParam)",
+      "item": [
+        {
+          "name": "Filtro: nome",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jogo?nome=knight",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo"
+              ],
+              "query": [
+                {
+                  "key": "nome",
+                  "value": "knight"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filtro: genero",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jogo?genero=RPG",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo"
+              ],
+              "query": [
+                {
+                  "key": "genero",
+                  "value": "RPG"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filtro: plataforma",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jogo?plataforma=PC",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo"
+              ],
+              "query": [
+                {
+                  "key": "plataforma",
+                  "value": "PC"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filtro: anoLancamento",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jogo?anoLancamento=2022",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo"
+              ],
+              "query": [
+                {
+                  "key": "anoLancamento",
+                  "value": "2022"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filtro: precoMaximo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jogo?precoMaximo=100",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo"
+              ],
+              "query": [
+                {
+                  "key": "precoMaximo",
+                  "value": "100"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Combinado: plataforma + precoMaximo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jogo?plataforma=PC&precoMaximo=100",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo"
+              ],
+              "query": [
+                {
+                  "key": "plataforma",
+                  "value": "PC"
+                },
+                {
+                  "key": "precoMaximo",
+                  "value": "100"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Combinado: genero + plataforma + anoLancamento + precoMaximo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jogo?genero=RPG&plataforma=PC&anoLancamento=2022&precoMaximo=300",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo"
+              ],
+              "query": [
+                {
+                  "key": "genero",
+                  "value": "RPG"
+                },
+                {
+                  "key": "plataforma",
+                  "value": "PC"
+                },
+                {
+                  "key": "anoLancamento",
+                  "value": "2022"
+                },
+                {
+                  "key": "precoMaximo",
+                  "value": "300"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4 - Atualizar (PUT)",
+      "item": [
+        {
+          "name": "Atualizar jogo 3",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/jogo/3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo",
+                "3"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Elden Ring\",\n  \"genero\": \"Action RPG\",\n  \"plataforma\": \"PlayStation 5\",\n  \"anoLancamento\": 2022,\n  \"preco\": 199.9\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Atualizar ID inexistente (espera 404)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/jogo/999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo",
+                "999"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Elden Ring\",\n  \"genero\": \"RPG\",\n  \"plataforma\": \"PC\",\n  \"anoLancamento\": 2022,\n  \"preco\": 229.9\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "5 - Excluir (DELETE)",
+      "item": [
+        {
+          "name": "Excluir jogo 2",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jogo/2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo",
+                "2"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Excluir ID inexistente (espera 404)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jogo/999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jogo",
+                "999"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
